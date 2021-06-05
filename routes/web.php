@@ -13,14 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
+// Route::get('/', function () {
     // try {
     //     DB::connection()->getPdo();
     //     echo "Connected successfully to: " . DB::connection()->getDatabaseName();
     // } catch (\Exception $e) {
     //     die("Could not connect to the database. Please check your configuration. error:" . $e );
     // }
+//     return view('welcome');
+// });
 
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\Web\SpaController@render');
+
+// 404 routing bug
+Route::get('{any}', function () {
+    return view('app');
+})->where('any', '.*');
