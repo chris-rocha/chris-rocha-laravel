@@ -1,4 +1,4 @@
-name: laravel-app
+name: chris-rocha-laravel
 type: laravel
 docroot: public
 php_version: "7.4"
