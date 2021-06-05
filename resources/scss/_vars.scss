@@ -1,0 +1,58 @@
+// GLOBAL VARIABLES - include your variables here or alter the predefined vars
+
+// Primary
+$warning: "red";
+$red: #8c1919;
+$buff: #fcf7e6;
+$brown: #301e05;
+
+$borderWidth: 1px;
+$formBorderWidth: 0.5px;
+$formFieldWidth: 280px;
+$formBorderColor: tint(black, 70%);
+
+// $inputHeight: 34px;
+
+// background vars
+$backgroundColor: white;
+
+// font vars
+$fontSize: 18px; // default font size. Change here will adjust sizes across the board.
+$fontFamily: 'Noto Sans HK', sans-serif; //'Georgia', serif; // default fonts
+$fontColor: $brown; //#333; // default font color
+// $boldFamily: $fontFamily;
+$fontWeight: normal;
+$boldWeight: 900;
+
+$iconFamily: 'Font Awesome 5 Free', 'Fontawesome';
+
+// link vars
+$linkColor: $red; // default link INERT color
+$linkHoverColor: tint($red, 50%); // default link HOVER color
+$linkDecoration: none; // default link decoration
+
+// heading vars
+$headingFamily: 'Noto Sans HK', sans-serif; //sans-serif; // default heading font
+$semiBoldWeight: 900;
+$headingColor: $fontColor;
+
+// form vars
+$formFont: $headingFamily; // default form font
+
+$heroMaxWidth: 1276px;
+$componentMaxWidth: 1176px;
+$landingMaxWidth: 1086px;
+$horizontalMaxWidth: 900px;
+$editorialMaxWidth: 740px;
+$mobileMargins: 7%;
+
+// media query dimensions
+$tenEightyWidth: 1900px;
+$desktopLgWidth: 1280px;
+$desktopWidth: 960px;
+$sixupSm: 565px;
+$sixupMd: 1086px;
+$tabletWidth: 800px; //768px;
+$mobilePortraitWidth: 300px;
+$mobileLandscapeWidth: 565px;
+$mobileMenuPoint: 960px;

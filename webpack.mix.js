@@ -12,6 +12,22 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+    // .postCss('resources/css/app.css', 'public/css', [
+    //     //
+    // ]);
+    .sass('resources/scss/style.scss', 'public/css', {
+        sassOptions: {
+            outputStyle: 'compressed',
+        },
+    })
+    .options({
+        autoprefixer: {
+            options: {
+                browsers: [
+                    'last 2 version',
+                    'ie 6-8',
+                    'Firefox > 20'
+                ]
+            }
+        }
+    });

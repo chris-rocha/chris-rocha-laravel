@@ -1,0 +1,233 @@
+.animate-enter-active {
+    transition: opacity 750ms ease-in-out, transform 500ms ease-in-out;
+  }
+  .animate-leave-active {
+    opacity: 0;
+  }
+  .animate-enter, .animate-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .slide-fade-enter-active {
+    transition: all 300ms ease;
+  }
+  .slide-fade-leave-active {
+    transition: all 250ms cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+
+  .bounce-enter-active {
+    animation: bounce-in 1s;
+    transition-delay: 1s;
+  }
+  .bounce-leave-active {
+    animation: bounce-in 50ms reverse;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1.0;
+    }
+  }
+
+  ul.menu,
+  ul.footer-menu {
+      display: flex;
+      flex-flow: wrap;
+      li {
+          margin-right: 1em;
+      }
+  }
+  .pic {
+      width: 100px;
+  }
+
+  ul.two {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+    li {
+        flex: 0 0 50%;
+        text-align: center;
+        margin-bottom: 20px;
+
+        img {
+            margin: 0 auto;
+        }
+        @media(max-width: 800px) {
+          flex-basis: 100%;
+        }
+        .caption {
+          padding-top: 10px;
+        }
+        img {
+          filter: sepia(50%) saturate(50%);
+          transition: filter 250ms ease-in-out;
+        }
+        &:hover, &:focus, &:active {
+          img {
+            filter: sepia(0%) saturate(100%);
+          }
+        }
+    }
+    &.gd {
+      li {
+        flex: 0 0 18%;
+        @media(max-width: 800px) {
+          flex-basis: 100%;
+        }
+        img {
+          filter: none !important;
+        }
+      }
+    }
+    h4 {
+      font: {
+        size: 16px;
+        weight: normal;
+      }
+      text-transform: uppercase;
+    }
+    .details {
+      font-size: 14px;
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+      opacity: 0;
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1.0;
+    }
+  }
+
+
+  .slide-enter-active {
+    animation: slideInLeft 500ms;
+  }
+
+  @media (min-width: 760px) {
+    .flex-row {
+      display: flex;
+      flex-flow: wrap;
+      .cell {
+        flex: 1 1 0;
+        margin-right: 20px;
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .smaller {
+    h2,
+    ul,
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .bio-header {
+    display: flex;
+    flex-flow: column;
+    img {
+      filter: sepia(50%) saturate(50%);
+      margin-bottom: 10px;
+    }
+    > div:first-of-type {
+      height: 80vh;
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        height: 80vh;
+        width: 1px;
+        left: 50%;
+        bottom: 0;
+        border-left: 1px dotted $fontColor;
+      }
+    }
+    > div:last-of-type {
+      border-top: 1px dotted $fontColor;
+      padding-top: $fontSize;
+    }
+    .cover {
+      position: relative;
+      z-index: 1;
+      background-color: $buff;
+      padding-bottom: $fontSize;
+    }
+  }
+  @media (min-width: 760px) {
+    .bio-header {
+      flex-flow: row;
+      > div {
+        &:first-of-type {
+          height: auto;
+          flex: 1 0 auto;
+          &:after {
+            content: none;
+          }
+        }
+        &:last-of-type {
+          border: none;
+          padding-top: 0;
+          padding-left: $fontSize * 2;
+        }
+      }
+    }
+  }
+
+  .container {
+    background-color: $buff;
+    #header & {
+      padding: 60px 60px 0;
+      @media (max-width: 760px) {
+        padding: 20px 20px 0;
+      }
+    }
+    #footer & {
+      padding: 0 60px 60px;
+      @media (max-width: 760px) {
+        padding: 0 20px 20px;
+      }
+    }
+    .inset {
+      #content & {
+        padding: 0 60px 0;
+        @media (max-width: 760px) {
+          padding: 0 20px 0;
+        }
+      }
+    }
+  }
+
+  #footer .container {
+    background: {
+    //   image: url(/images/ripped-paper-edge-bottom.webp);
+      size: 100% 50%;
+      position: center 120%;
+      repeat: no-repeat;
+    }
+    @media (max-width: 760px) {
+      background-position: center 150%;
+    }
+  }

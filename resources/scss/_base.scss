@@ -1,0 +1,528 @@
+// IMPORTS
+@import "functions";
+@import "vars";
+@import "mixins";
+
+/* RESET & BASICS (Inspired by E. Meyers)
+ * ------------------------------------------------ */
+@import "reset";
+
+/* BASIC STYLES
+ * ------------------------------------------------ */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  /* prevent page moving between loads when content is short */
+  overflow-y: scroll;
+}
+body {
+  background: $backgroundColor;
+  font: {
+    size: $fontSize;
+    family: $fontFamily;
+    weight: $fontWeight;
+    style: normal;
+  }
+  line-height: 1.3;
+  color: $fontColor;
+  -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* TYPOGRAPHY
+ * ------------------------------------------------ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: {
+    family: $headingFamily;
+    weight: 400;
+  }
+  line-height: 1.2;
+  margin-bottom: $fontSize;
+  color: $headingColor;
+  em {
+    strong,
+    b {
+      font-family: $headingFamily;
+    }
+  }
+  strong, b { font-weight: $boldWeight; }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  a, a:visited {
+    background-image: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 250ms ease-in-out;
+  }
+  a:hover, a:active, a:focus {
+  }
+}
+h1 {
+  font-size: 55px;
+  margin-bottom: 20px;
+  letter-spacing: -2px;
+  @media(max-width: $tabletWidth) {
+    font-size: 46px;
+  }
+}
+h2 {
+  font-weight: $boldWeight;
+  font-size: 34px;
+  margin-bottom: 10px;
+  a, a:visited {
+  }
+  a:hover, a:active, a:focus {
+  }
+}
+h3 {
+  font-size: 30px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+h4 {
+  font-size: 26px;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+h5 {
+  font-size: 24px;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+h6 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+p {
+  line-height: 1.5;
+  margin: 0 0 $fontSize 0;
+  // strong, b {
+  //   font-weight: bold;
+  // }
+  img {
+    margin: 0;
+  }
+  &.lead {
+    // also called intro
+    font-size: 22px;
+    line-height: 1.4;
+  }
+}
+.lead {
+  p {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+}
+em,
+i {
+  font-style: italic;
+}
+strong,
+b {
+  font-weight: bold;
+}
+u {
+  text-decoration: underline;
+}
+small,
+.legal,
+.small,
+.small-text {
+  font-size: 12px;
+  line-height: 1.25;
+  margin-bottom: $fontSize / 2;
+  small {
+    margin-top:0.5em;
+    font-size:85%;
+  }
+}
+
+/*  Blockquotes  */
+blockquote {
+  font-size: 28px;
+  margin-bottom: $fontSize;
+  padding: 50px 0;
+  text-align: center;
+  p {
+    margin: 0;
+  }
+}
+blockquote cite {
+  display: block;
+  font-size: $fontSize;
+  color: $fontColor;
+}
+hr {
+  border: {
+    style: dotted;
+    color: $fontColor;
+    width: 0 0 1px;
+  }
+  clear: both;
+  margin: ($fontSize * 2) auto;
+}
+
+/* LINKS
+ * ------------------------------------------------ */
+a,
+a:visited {
+  color: $linkColor;
+  text-decoration: $linkDecoration;
+  outline: 0;
+  border-bottom: 1px solid $linkHoverColor;
+  transition:color 250ms ease-in-out, border-color 250ms ease-in-out;
+}
+a:hover,
+a:focus,
+a:active,
+a.router-link-exact-active {
+  color: $linkHoverColor;
+  border-color: $linkHoverColor;
+}
+
+
+/* LISTS
+ * ------------------------------------------------ */
+ul,
+ol {
+  margin-bottom: 20px;
+}
+ul {
+  list-style: none outside;
+}
+ol {
+  list-style: decimal;
+  &.bold {
+    font-weight: $boldWeight;
+  }
+  li span {
+    font-weight: $fontWeight;
+  }
+}
+ol,
+ul.square,
+ul.circle,
+ul.disc {
+  margin-left: 30px;
+}
+ul.square {
+  list-style: square outside;
+}
+ul.circle {
+  list-style: circle outside;
+}
+ul.disc {
+  list-style: disc outside;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: {
+    top: 4px;
+    right: 0;
+    bottom: 5px;
+    left: 30px;
+  }
+  font-size: 90%;
+}
+ul ul li,
+ul ol li,
+ol ol li,
+ol ul li {
+  margin-bottom: 6px;
+}
+li {
+  margin-bottom: 12px;
+}
+// ul.large li { }
+// li p { }
+
+/* IMAGES
+ * ------------------------------------------------ */
+img.scale-with-grid {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* BUTTONS
+ * ------------------------------------------------ */
+.button,
+button,
+a.button[href^="tel"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  background-image: none !important;
+  appearance: none;
+  background-color: rgba($fontColor, 0);
+  border: $formBorderWidth solid $fontColor;
+  border-radius: 0;
+  color: $fontColor;
+  display: inline-block;
+  font: {
+    size: 16px;
+    family: $headingFamily;
+    weight: 700;
+  }
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.8em 1.5em;
+  outline: 0;
+
+  transition: all 250ms ease-in-out;
+
+  &:visited {
+    background-color: rgba($fontColor, 0);
+    color: $fontColor;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: rgba($fontColor, 1.0);
+    border-color: $fontColor;
+    color: white;
+  }
+  &:active {
+    box-shadow: 0 2px 3px rgba($fontColor, 0.15);
+    color: white;
+  }
+  // &:visited { color: $fontColor; }
+  &.full-width {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center;
+  }
+  &.smaller {
+    font-size: $fontSize - 5;
+  }
+  &.larger {
+    font-size: 1.5em;
+  }
+}
+
+/* Fix for odd Mozilla border & padding issues */
+button,
+input {
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+/* FORMS
+ * ------------------------------------------------ */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+select {
+  appearance: none;
+}
+
+form {
+  font-family: $formFont;
+  margin-bottom: 20px;
+}
+fieldset {
+  border: $formBorderWidth solid $formBorderColor;
+  border-radius: 0;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="number"],
+textarea,
+select {
+  background: white;
+  border: $formBorderWidth solid $formBorderColor;
+  padding: 8px 12px;
+  outline: none;
+  border-radius: 0;
+  font: {
+    // size: $fontSize + 1;
+    family: $formFont;
+  }
+  margin: 0 0 20px;
+  //max-width: $formFieldWidth;
+  width: 100%;
+  display: block;
+  &:hover,
+  &:focus {
+    color: $fontColor;
+    box-shadow: 0 0 2px rgba($fontColor, 0.2);
+  }
+  &:active {
+    box-shadow: 0 0 2px rgba($fontColor, 0.3);
+  }
+}
+
+
+select {
+  appearance: none;
+  padding: 8px 8px;
+  border: $formBorderWidth solid $formBorderColor;
+  background: white;
+  color: $fontColor;
+  vertical-align: baseline;
+  box-sizing: inherit;
+  outline: 2px solid transparent;
+  outline-offset: 0px;
+  transition: all 100ms ease;
+//   background: url('../images/caret-down-solid.svg') no-repeat 98% 50% white;
+  background-size: 18px 18px;
+  border-radius: 0;
+  width: 100%;
+  // max-width: $formFieldWidth - 20;
+
+  -moz-padding-start: 12px;
+  -moz-padding-end: $fontSize * 1.8;
+  -moz-padding-before: 12px;
+  -moz-padding-after: 12px;
+
+  -webkit-padding-start: 12px;
+  -webkit-padding-end: $fontSize * 1.8;
+  -webkit-padding-before: 12px;
+  -webkit-padding-after: 12px;
+
+
+  &:focus {
+    color: $fontColor;
+    // border-color: $fontColor;
+    outline-offset: 0px;
+  }
+
+}
+
+textarea {
+  min-height: 60px;
+}
+label,
+legend {
+  display: block;
+  font-family: $headingFamily;
+  font-weight: 600;
+  font-size: 16px;
+  // text-transform: uppercase;
+  p {
+    font-size: $fontSize;
+  }
+}
+label {
+  margin-bottom: 5px;
+}
+
+input[type="checkbox"] {
+  display: inline;
+  border: $formBorderWidth solid $formBorderColor;
+}
+
+input,
+textarea,
+button,
+select,
+label,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* CLEARING
+ * ------------------------------------------------ */
+.clearfix, .row {
+  zoom: 1;
+  &:before, &:after {
+    content: "\0020";
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  &:after { clear: both; }
+}
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* MISC
+ * ------------------------------------------------ */
+.remove-bottom {
+  margin-bottom: 0 !important;
+}
+.add-bottom {
+  margin-bottom: $fontSize !important;
+}
+.add-top {
+  margin-top: $fontSize !important;
+  display: inline-block;
+  width: 100%;
+}
+.remove-top {
+  margin-top: 0 !important;
+}
+.center-text {
+  text-align: center;
+}
+.righten-text {
+  text-align: right;
+}
+.all-caps {
+  text-transform: uppercase;
+}
+.title-case {
+  text-transform: capitalize;
+}
+.border-none {
+  border: none;
+  outline: none;
+}
+.mobile-menu-only {
+  @media(min-width: $mobileMenuPoint + 1 ) {
+    display: none;
+  }
+}
+
+.desktop-menu-only {
+  @media(max-width: $mobileMenuPoint) {
+    display: none;
+  }
+}
