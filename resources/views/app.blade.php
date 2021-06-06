@@ -15,9 +15,7 @@
         <style><?php include public_path('css/style.css'); ?></style>
     </head>
     <body>
-        <div id="app">
-            <router-view></router-view>
-        </div>
+        <div id="app"></div>
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

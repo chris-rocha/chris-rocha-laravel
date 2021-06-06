@@ -25,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\Web\SpaController@render');
 
+Route::get('/admin', 'App\Http\Controllers\Web\AdminController@index');
+Route::post('/admin', 'App\Http\Controllers\Web\AdminController@upload')->name('admin');
+
 // 404 routing bug
 Route::get('{any}', function () {
     return view('app');
