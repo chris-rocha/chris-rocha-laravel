@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use App\Models\Design;
+
 
 class DesignController extends Controller
 {
@@ -15,7 +17,9 @@ class DesignController extends Controller
      */
     public function index()
     {
-        $design = [];
+
+        $design = Design::all();
+
         $response = new Response($design, Response::HTTP_OK);
         // Return HTTP response.
         return $response;
@@ -39,7 +43,12 @@ class DesignController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [];
+        if (!empty($data)) {
+            Design::insert($data);
+        }
+        $response = new Response($data, Response::HTTP_CREATED);
+        return $response;
     }
 
     /**

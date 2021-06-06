@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use App\Models\Code;
+
 
 class CodeController extends Controller
 {
@@ -15,7 +17,9 @@ class CodeController extends Controller
      */
     public function index()
     {
-        $code = [];
+
+        $code = Code::all();
+
         $response = new Response($code, Response::HTTP_OK);
         // Return HTTP response.
         return $response;
@@ -39,7 +43,22 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $new_code = new Code;
+        $new_code->title = $request->code['title'];
+        $new_code->details = $request->code['details'];
+        $new_code->link = $request->code['link'];
+        $new_code->thumb = $request->code['thumb'];
+        $new_code->description = $request->code['description'];
+        $new_code->save();
+
+
+        // $data = [];
+        // if (!empty($data)) {
+        //     Code::insert($data);
+        // }
+        $response = new Response($new_code, Response::HTTP_CREATED);
+        return $response;
     }
 
     /**
