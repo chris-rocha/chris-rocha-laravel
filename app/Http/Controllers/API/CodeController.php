@@ -18,7 +18,8 @@ class CodeController extends Controller
     public function index()
     {
 
-        $code = Code::all();
+        // $code = Code::all();
+        $code = Code::orderBy('created_at', 'desc')->get();
 
         $response = new Response($code, Response::HTTP_OK);
         // Return HTTP response.
