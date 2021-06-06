@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 
 class CodeController extends Controller
@@ -14,7 +15,10 @@ class CodeController extends Controller
      */
     public function index()
     {
-        //
+        $code = [];
+        $response = new Response($code, Response::HTTP_OK);
+        // Return HTTP response.
+        return $response;
     }
 
     /**

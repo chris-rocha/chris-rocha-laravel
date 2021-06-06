@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 
 class DesignController extends Controller
@@ -14,7 +15,10 @@ class DesignController extends Controller
      */
     public function index()
     {
-        //
+        $design = [];
+        $response = new Response($design, Response::HTTP_OK);
+        // Return HTTP response.
+        return $response;
     }
 
     /**
