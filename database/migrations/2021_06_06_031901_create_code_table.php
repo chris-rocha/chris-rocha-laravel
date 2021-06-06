@@ -19,7 +19,7 @@ class CreateCodeTable extends Migration
             $table->string('details');
             $table->string('link');
             $table->string('thumb');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
