@@ -13,22 +13,28 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()
+    .extract(['vue'])
+    .version()
     // .postCss('resources/css/app.css', 'public/css', [
     //     //
     // ]);
     .sass('resources/scss/style.scss', 'public/css', {
         sassOptions: {
-            outputStyle: 'compressed',
+            outputStyle: 'compressed',//'expanded',
+            processCssUrls: false
         },
     })
     .options({
+        postCss: [require("autoprefixer")],
         autoprefixer: {
             options: {
                 browsers: [
                     'last 2 version',
                     'ie 6-8',
                     'Firefox > 20'
-                ]
+                ],
+                grid: true,
+                cascade: false
             }
         }
     });

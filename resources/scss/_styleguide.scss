@@ -231,3 +231,13 @@
       background-position: center 150%;
     }
   }
+
+.alert {
+    font-weight: $boldWeight;
+    &.alert-success {
+        color: darkgreen;
+    }
+    &.alert-danger {
+        color: $red;
+    }
+}

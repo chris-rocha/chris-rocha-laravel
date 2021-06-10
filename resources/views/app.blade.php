@@ -1,5 +1,5 @@
 @extends('layouts.default')
 
 @section('content')
-<div id="app"></div>
+<div class="app-wrap" id="app"></div>
 @stop

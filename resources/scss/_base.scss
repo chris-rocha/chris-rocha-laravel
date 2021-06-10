@@ -1,3 +1,4 @@
+@use "sass:math";
 // IMPORTS
 @import "functions";
 @import "vars";
@@ -146,7 +147,7 @@ small,
 .small-text {
   font-size: 12px;
   line-height: 1.25;
-  margin-bottom: $fontSize / 2;
+  margin-bottom: math.div($fontSize, 2); //$fontSize / 2;
   small {
     margin-top:0.5em;
     font-size:85%;
