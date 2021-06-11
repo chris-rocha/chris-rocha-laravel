@@ -18,7 +18,8 @@ class DesignController extends Controller
     public function index()
     {
 
-        $design = Design::all();
+        // $design = Design::all();
+        $design = Design::orderBy('type')->get();
 
         $response = new Response($design, Response::HTTP_OK);
         // Return HTTP response.
