@@ -34,9 +34,14 @@
                 </div>
             @endif
 
+                <div class="add-bottom">
+                    <label for="type">Type</label>
+                    <input type="text" name="type" id="type">
+                </div>
+
     {{-- https://www.positronx.io/laravel-file-upload-with-validation/ --}}
                 <div class="custom-file add-bottom">
-                    <label class="custom-file-label" for="chooseFile">Select file</label>
+                    <label class="custom-file-label" for="chooseFile">Thumb</label>
                     <input type="file" name="file" class="custom-file-input" id="chooseFile">
                 </div>
 

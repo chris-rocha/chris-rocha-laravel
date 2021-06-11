@@ -14,7 +14,7 @@ class Design extends Model
      *
      * @var string
      */
-    protected $table = 'code';
+    protected $table = 'design';
 
     /**
      * The primary key associated with the table.

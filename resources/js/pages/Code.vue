@@ -1,6 +1,6 @@
 <template>
 <div class="inset">
-    <ul class="two">
+<transition-group tag="ul" class="two" name="bounce">
       <li v-for="(c, i) in code" :key="i">
       <a target="_blank" :href="c.link" :title="c.title">
         <img loading="lazy" width="300" height="240" :alt="c.title" class="scale-with-grid" :src="c.thumb" />
@@ -10,7 +10,7 @@
       </div>
       </a>
       </li>
-    </ul>
+</transition-group>
 </div>
 </template>
 
