@@ -321,6 +321,21 @@ input[type="button"] {
   &.larger {
     font-size: 1.5em;
   }
+  &.unstyle {
+      text-transform: none;
+      background-color: transparent;
+      border: none;
+      color: inherit;
+      letter-spacing: 0;
+      padding: 0;
+      font: {
+          family: inherit;
+          size: inherit;
+          weight: inherit;
+      }
+      line-height: inherit;
+      display: inline;
+  }
 }
 
 /* Fix for odd Mozilla border & padding issues */

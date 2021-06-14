@@ -4,7 +4,7 @@
     <hr />
 
 <transition-group tag="ul" class="two gd" name="bounce">
-  <li v-for="(design, index) in gd" :key="index">
+  <li v-for="(design, index) in gd" :key="`loop-${index}`">
     <img loading="lazy" width="174" height="140" class="scale-with-grid" :src="design.thumb" :alt="design.type" />
     <div class="caption">
     <h4>{{ design.type }}</h4>

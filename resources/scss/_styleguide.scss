@@ -49,6 +49,14 @@
       li {
           margin-right: 1em;
       }
+      button {
+          padding-bottom: 2px;
+          color: $red;
+          border-bottom: 1px solid $linkHoverColor;
+          &:hover, &:active, &:focus {
+              color: $linkHoverColor;
+          }
+      }
   }
   .pic {
       width: 100px;

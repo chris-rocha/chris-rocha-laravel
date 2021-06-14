@@ -23,10 +23,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', 'App\Http\Controllers\Web\SpaController@render');
+Route::get('/', 'App\Http\Controllers\Web\SpaController@render')->name('spa');
 
-Route::get('/admin', 'App\Http\Controllers\Web\AdminController@index');
-Route::post('/admin', 'App\Http\Controllers\Web\AdminController@upload')->name('admin');
+Route::post('/logout', 'App\Http\Controllers\Web\LogoutController@index')->name('logout');
+
+Route::get('/login', 'App\Http\Controllers\Web\LoginController@index')->name('login');
+Route::post('/login', 'App\Http\Controllers\Web\LoginController@signin');
+
+Route::get('/register', 'App\Http\Controllers\Web\RegisterController@index')->name('register');
+Route::post('/register', 'App\Http\Controllers\Web\RegisterController@create');
+
+
+Route::get('/admin', 'App\Http\Controllers\Web\AdminController@index')->name('admin');
+Route::post('/admin', 'App\Http\Controllers\Web\AdminController@upload');
 
 // 404 routing bug
 Route::get('{any}', function () {

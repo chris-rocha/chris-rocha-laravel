@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 use App\Models\Design;
+use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
     /**
      *
      * @param Request $request http request
@@ -22,6 +28,7 @@ class AdminController extends Controller
 
     public function upload(Request $request)
     {
+
         $request->validate([
             'file' => 'required|mimes:png,jpg,jpeg|max:2048'
         ]);

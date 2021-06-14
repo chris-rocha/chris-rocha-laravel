@@ -4,7 +4,7 @@
 <div class="app-wrap">
     <header id="header" class="landing-max-width">
     <div class="container">
-        <h1>Admin</h1>
+        <h1>Register</h1>
         <ul class="menu">
             <li><a href="{{ route('spa') }}">Home</a></li>
             <li><a class="router-link-active {{ (request()->is('admin')) ? 'router-link-exact-active' : '' }}" href="{{ route('admin') }}">Admin</a></li>
@@ -28,9 +28,8 @@
         <div class="container">
             <div class="inset">
 
-        @auth
-            <form action="{{route('admin')}}" method="post" enctype="multipart/form-data">
-            <h3 >Upload File in Laravel</h3>
+
+            <form action="{{route('register')}}" method="post">
                 @csrf
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success">
@@ -51,25 +50,29 @@
             @endif
 
                 <div class="add-bottom">
-                    <label for="type">Type</label>
-                    <input type="text" name="type" id="type">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" value="{{ old('name') }}">
+                </div>
+                <div class="add-bottom">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" value="{{ old('email') }}">
+                </div>
+                <div class="add-bottom">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" value="">
+                </div>
+                <div class="add-bottom">
+                    <label for="password_confirmation">Password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" value="">
                 </div>
 
-    {{-- https://www.positronx.io/laravel-file-upload-with-validation/ --}}
-                <div class="custom-file add-bottom">
-                    <label class="custom-file-label" for="chooseFile">Thumb</label>
-                    <input type="file" name="file" class="custom-file-input" id="chooseFile">
-                </div>
+
 
                 <button type="submit" name="submit">
-                    Upload Files
+                    Register
                 </button>
             </form>
-        @endauth
 
-        @guest
-            <p>Users must <a href="{{ route('login') }}">login</a> to adminster site.</p>
-        @endguest
 
             </div>
         </div>
